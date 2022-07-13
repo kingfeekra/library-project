@@ -51,7 +51,10 @@ function addButton() {
     for(let i = 0; i < listItems.length; i++) {
         buttons[i] = document.createElement("button");
         buttons[i].textContent = "Remove";
-        buttons[i].classList.add("removeButton")
+        buttons[i].classList.add("removeButton");
+        buttons[i].addEventListener("click", () => {
+            list.removeChild(listItems[i]);
+        });
         listItems[i].appendChild(buttons[i]);
         }
 }
@@ -67,4 +70,11 @@ submitButton.addEventListener("click", () => {
     addButton();
 });
 
-
+const removeButton = document.querySelectorAll(".removeButton");
+for(let i = 0; i < removeButton.length; i++) {
+removeButton[i].addEventListener("click", () => {
+    const listItems = document.querySelectorAll("li");
+    list.removeChild(listItems[i]);
+    console.log(poop);
+})
+}
