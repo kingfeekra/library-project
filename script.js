@@ -71,20 +71,20 @@ function displayBooks() {
 }
 
 function addButton() {
-    const listItems = document.querySelectorAll("li");
+    const bookCard = document.querySelectorAll(".bookCard");
     const buttons = [];
-    for(let i = 0; i < listItems.length; i++) {
+    for(let i = 0; i < bookCard.length; i++) {
         buttons[i] = document.createElement("button");
         buttons[i].textContent = "Remove";
         buttons[i].classList.add("removeButton");
         buttons[i].addEventListener("click", () => {
-            list.removeChild(listItems[i]);
             myLibrary.splice(i, 1);
+            list.removeChild(bookCard[i]);
             console.log(myLibrary);
         });
-        listItems[i].appendChild(buttons[i]);
+        bookCard[i].appendChild(buttons[i]);
         }
-}
+    }
 
 const submitButton = document.querySelector("#submitButton");
 submitButton.addEventListener("click", () => {
@@ -95,6 +95,7 @@ submitButton.addEventListener("click", () => {
     addBookToLibrary();
     displayBooks();
     addButton();
+    console.log(bookCard);
 });
 
 const removeButton = document.querySelectorAll(".removeButton");
