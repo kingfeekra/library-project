@@ -34,14 +34,39 @@ function addBookToLibrary() {
 }
 
 const list = document.querySelector("#list");
-const books = [];
+const bookCard = [];
+const bookList = [];
+
+const bookTitle = [];
+const bookAuthor = [];
+const bookPages = [];
+const bookRead = [];
 
 function displayBooks() {
     for(let i = 0; i < myLibrary.length; i++) {
-        books[i] = document.createElement("li");
-        books[i].setAttribute("data-index-number", i);
-        books[i].textContent = myLibrary[i].title;
-        list.appendChild(books[i]);
+        bookCard[i] = document.createElement("div");
+        bookCard[i].classList.add("bookCard")
+        bookCard[i].setAttribute("data-index-number", i);
+        list.appendChild(bookCard[i]);
+
+        bookList[i] = document.createElement("ul");
+        bookCard[i].appendChild(bookList[i]);
+
+        bookTitle[i] = document.createElement("li");
+        bookTitle[i].textContent = myLibrary[i].title;
+        bookList[i].appendChild(bookTitle[i]);
+
+        bookAuthor[i] = document.createElement("li");
+        bookAuthor[i].textContent = myLibrary[i].author;
+        bookList[i].appendChild(bookAuthor[i]);
+
+        bookPages[i] = document.createElement("li");
+        bookPages[i].textContent = myLibrary[i].pages;
+        bookList[i].appendChild(bookPages[i]);
+
+        bookRead[i] = document.createElement("li");
+        bookRead[i].textContent = myLibrary[i].read;
+        bookList[i].appendChild(bookRead[i]);
     }
 }
 
@@ -54,6 +79,8 @@ function addButton() {
         buttons[i].classList.add("removeButton");
         buttons[i].addEventListener("click", () => {
             list.removeChild(listItems[i]);
+            myLibrary.splice(i, 1);
+            console.log(myLibrary);
         });
         listItems[i].appendChild(buttons[i]);
         }
@@ -61,9 +88,9 @@ function addButton() {
 
 const submitButton = document.querySelector("#submitButton");
 submitButton.addEventListener("click", () => {
-    const listItems = document.querySelectorAll("li");
-    for(let i = 0; i < listItems.length; i++) {
-    list.removeChild(listItems[i]);
+    const bookCards = document.querySelectorAll(".bookCard");
+    for(let i = 0; i < bookCards.length; i++) {
+    list.removeChild(bookCard[i]);
     }
     addBookToLibrary();
     displayBooks();
@@ -73,8 +100,8 @@ submitButton.addEventListener("click", () => {
 const removeButton = document.querySelectorAll(".removeButton");
 for(let i = 0; i < removeButton.length; i++) {
 removeButton[i].addEventListener("click", () => {
-    const listItems = document.querySelectorAll("li");
-    list.removeChild(listItems[i]);
+    const bookCards = document.querySelectorAll(".bookCard");
+    list.removeChild(bookCards[i]);
     console.log(poop);
 })
 }
