@@ -95,7 +95,6 @@ submitButton.addEventListener("click", () => {
     addBookToLibrary();
     displayBooks();
     addButton();
-    console.log(bookCard);
 });
 
 const removeButton = document.querySelectorAll(".removeButton");
