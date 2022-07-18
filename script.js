@@ -72,13 +72,14 @@ function displayBooks() {
 
 function addButton() {
     const bookCard = document.querySelectorAll(".bookCard");
+    const dataAttribute = document.querySelectorAll("data-index-number")
     const buttons = [];
     for(let i = 0; i < bookCard.length; i++) {
         buttons[i] = document.createElement("button");
         buttons[i].textContent = "Remove";
         buttons[i].classList.add("removeButton");
         buttons[i].addEventListener("click", () => {
-            myLibrary.splice(i, 1);
+            myLibrary.splice(dataAttribute[i], 1);
             list.removeChild(bookCard[i]);
             console.log(myLibrary);
         });
