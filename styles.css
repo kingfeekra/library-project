@@ -130,6 +130,7 @@ select {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
   transition: 0.3s;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 #submitButton:hover {
@@ -154,6 +155,7 @@ select {
 
 #list {
     display:flex;
+	justify-content: center;
     flex-wrap: wrap;
 	margin: 20px;
 }
@@ -183,4 +185,17 @@ select {
 
 .bookTitle {
 	font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+
+	#container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	header {
+		min-height: 100px;
+	}
+
 }
