@@ -73,34 +73,56 @@ function displayBooks() {
 function addButton() {
     const bookCard = document.querySelectorAll(".bookCard");
     const dataAttribute = document.querySelectorAll("data-index-number")
-    const buttons = [];
+    const buttonDivs = [];
+    const deleteButtons = [];
+    const readButtons = [];
     for(let i = 0; i < bookCard.length; i++) {
-        buttons[i] = document.createElement("button");
-        buttons[i].textContent = "Remove";
-        buttons[i].classList.add("removeButton");
-        buttons[i].addEventListener("click", () => {
+        buttonDivs[i] = document.createElement("div");
+        deleteButtons[i] = document.createElement("img");
+        deleteButtons[i].src = "images/delete-forever-outline-small.png";
+        deleteButtons[i].classList.add("deleteButton");
+        deleteButtons[i].addEventListener("click", () => {
             myLibrary.splice(dataAttribute[i], 1);
             list.removeChild(bookCard[i]);
             console.log(myLibrary);
         });
-        bookCard[i].appendChild(buttons[i]);
+
+        readButtons[i] = document.createElement("img");
+        readButtons[i].src = "images/book-outline-small.png";
+        readButtons[i].classList.add("readButton");
+        readButtons[i].addEventListener("click", () => {
+            if(myLibrary[i].read == "Yes") {
+                myLibrary[i].read = "No";
+                bookRead[i].textContent = "Read? No";
+            }
+            else if (myLibrary[i].read == "No") {
+                myLibrary[i].read = "Yes";
+                bookRead[i].textContent = "Read? Yes";
+            }
+            console.log(myLibrary[i].read)
+        })
+
+        bookCard[i].appendChild(buttonDivs[i]);
+        buttonDivs[i].appendChild(deleteButtons[i]);
+        buttonDivs[i].appendChild(readButtons[i]);
         }
     }
 
 const submitButton = document.querySelector("#submitButton");
 submitButton.addEventListener("click", () => {
     const bookCards = document.querySelectorAll(".bookCard");
-    for(let i = 0; i < bookCards.length; i++) {
+    /*for(let i = 0; i < bookCards.length; i++) {
     list.removeChild(bookCard[i]);
-    }
+    }*/
+    list.innerHTML = "";
     addBookToLibrary();
     displayBooks();
     addButton();
 });
 
-const removeButton = document.querySelectorAll(".removeButton");
-for(let i = 0; i < removeButton.length; i++) {
-removeButton[i].addEventListener("click", () => {
+const deleteButton = document.querySelectorAll(".deleteButton");
+for(let i = 0; i < deleteButton.length; i++) {
+deleteButton[i].addEventListener("click", () => {
     const bookCards = document.querySelectorAll(".bookCard");
     list.removeChild(bookCards[i]);
     console.log(poop);

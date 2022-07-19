@@ -42,8 +42,11 @@ table {
 	border-spacing: 0;
 }
 
+body {
+	height: 100vh;
+}
+
 #container {
-	margin: 20px;
     width: 100%;
     height: 100%;
     display: grid;
@@ -53,10 +56,12 @@ table {
 
 .bookSubmission {
     display: flex;
+	justify-content: center;
+	background-color: aqua;
 }
 
-form > p {
-	
+.bookSubmission > div {
+	margin-top: 20px;
 }
 
 form { 
@@ -91,9 +96,24 @@ select {
     
 }
 
+.deleteButton:hover {
+	content:url(images/delete-forever-small.png);
+	cursor: pointer;
+}
+
+.readButton:hover {
+	content:url(images/book-small.png);
+	cursor: pointer;
+}
+
+#listDiv {
+	background-color: rgb(226, 226, 226);
+}
+
 #list {
     display:flex;
     flex-wrap: wrap;
+	margin: 20px;
 }
 
 .bookCard {
