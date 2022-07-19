@@ -53,15 +53,16 @@ function displayBooks() {
         bookCard[i].appendChild(bookList[i]);
 
         bookTitle[i] = document.createElement("li");
-        bookTitle[i].textContent = "Title: " + myLibrary[i].title;
+        bookTitle[i].textContent = myLibrary[i].title;
+        bookTitle[i].classList.add("bookTitle");
         bookList[i].appendChild(bookTitle[i]);
 
         bookAuthor[i] = document.createElement("li");
-        bookAuthor[i].textContent = "Author: " + myLibrary[i].author;
+        bookAuthor[i].textContent = myLibrary[i].author;
         bookList[i].appendChild(bookAuthor[i]);
 
         bookPages[i] = document.createElement("li");
-        bookPages[i].textContent = "Pages: " + myLibrary[i].pages;
+        bookPages[i].textContent = myLibrary[i].pages + " Pages";
         bookList[i].appendChild(bookPages[i]);
 
         bookRead[i] = document.createElement("li");
