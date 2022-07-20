@@ -1,19 +1,7 @@
-/*function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
-        return(title + " by " + author + ", " + pages + " pages, " + read)
-    }
-}
-
-const book1 = new Book("The Hobbit", "JRR Tolkien", 256, "has been read")
-console.log(book1.info());*/
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read) { //book object constructor
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -22,7 +10,7 @@ function Book(title, author, pages, read) {
 
 
 
-function addBookToLibrary() {
+function addBookToLibrary() { //adds book to library array
     const title = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
@@ -42,7 +30,7 @@ const bookAuthor = [];
 const bookPages = [];
 const bookRead = [];
 
-function displayBooks() {
+function displayBooks() { //displays book information on cards
     for(let i = 0; i < myLibrary.length; i++) {
         bookCard[i] = document.createElement("div");
         bookCard[i].classList.add("bookCard")
@@ -71,7 +59,7 @@ function displayBooks() {
     }
 }
 
-function addButton() {
+function addButton() { //adds remove button and read/unread button to cards
     const bookCard = document.querySelectorAll(".bookCard");
     const dataAttribute = document.querySelectorAll("data-index-number")
     const buttonDivs = [];
@@ -110,11 +98,7 @@ function addButton() {
     }
 
 const submitButton = document.querySelector("#submitButton");
-submitButton.addEventListener("click", () => {
-    const bookCards = document.querySelectorAll(".bookCard");
-    /*for(let i = 0; i < bookCards.length; i++) {
-    list.removeChild(bookCard[i]);
-    }*/
+submitButton.addEventListener("click", () => { //empties card list and re-displays library with added book
     list.innerHTML = "";
     addBookToLibrary();
     displayBooks();
@@ -123,9 +107,8 @@ submitButton.addEventListener("click", () => {
 
 const deleteButton = document.querySelectorAll(".deleteButton");
 for(let i = 0; i < deleteButton.length; i++) {
-deleteButton[i].addEventListener("click", () => {
+deleteButton[i].addEventListener("click", () => { //removes card from list
     const bookCards = document.querySelectorAll(".bookCard");
     list.removeChild(bookCards[i]);
-    console.log(poop);
 })
 }
