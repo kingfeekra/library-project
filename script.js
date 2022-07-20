@@ -98,11 +98,22 @@ function addButton() { //adds remove button and read/unread button to cards
     }
 
 const submitButton = document.querySelector("#submitButton");
-submitButton.addEventListener("click", () => { //empties card list and re-displays library with added book
+submitButton.addEventListener("click", (event) => { //empties card list and re-displays library with added book
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    const read = document.querySelector("#read").value;
+    
+    if(title == "" || author == "" || pages == "" || read == "") {
+        return;
+    }
+    else {
     list.innerHTML = "";
     addBookToLibrary();
     displayBooks();
     addButton();
+    event.preventDefault();
+    }
 });
 
 const deleteButton = document.querySelectorAll(".deleteButton");
