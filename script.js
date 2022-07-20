@@ -105,14 +105,14 @@ submitButton.addEventListener("click", (event) => { //empties card list and re-d
     const read = document.querySelector("#read").value;
     
     if(title == "" || author == "" || pages == "" || read == "") {
-        return;
+        return; //form can't be submitted if any field is empty
     }
     else {
     list.innerHTML = "";
     addBookToLibrary();
     displayBooks();
     addButton();
-    event.preventDefault();
+    event.preventDefault(); //prevent page reloading on submission
     }
 });
 
